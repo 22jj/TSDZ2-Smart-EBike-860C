@@ -16,15 +16,12 @@
 #define CADENCE						0
 #define SPEED						1
 
-// torque sensor offset calibrated
-//extern volatile uint16_t ui16_adc_pedal_torque_offset_cal;
-
 // cadence sensor
 extern uint16_t ui16_cadence_ticks_count_min_speed_adj;
 extern uint8_t ui8_pedal_cadence_fast_stop;
 extern uint8_t ui8_lights_state;
 extern uint8_t ui8_field_weakening_enabled;
-extern uint8_t ui8_assist_level;
+extern uint8_t ui8_assist_level_flag;
 
 // Torque sensor coaster brake engaged threshold value
 extern uint16_t ui16_adc_coaster_brake_threshold;
@@ -35,20 +32,13 @@ extern volatile uint8_t ui8_adc_motor_phase_current_max;
 // ADC battery current target
 //extern volatile uint8_t ui8_adc_battery_current_target;
 
-// Motor enabled
+// Motor
+extern uint8_t ui8_motor_inductance_x1048576; 
 extern volatile uint8_t ui8_motor_enabled;
 
-typedef struct _configuration_variables {
-    uint16_t ui16_battery_low_voltage_cut_off_x10;
-    uint16_t ui16_wheel_perimeter;
-    uint8_t ui8_wheel_speed_max;
-    uint8_t ui8_motor_inductance_x1048576;
-    uint8_t ui8_pedal_torque_per_10_bit_ADC_step_x100;
-    uint8_t ui8_target_battery_max_power_div25;
-    uint8_t ui8_optional_ADC_function;
-} struct_configuration_variables;
+// Throttle
+extern uint8_t ui8_adc_throttle_assist;
 
 void ebike_app_controller(void);
-struct_configuration_variables* get_configuration_variables(void);
 
 #endif /* _EBIKE_APP_H_ */
